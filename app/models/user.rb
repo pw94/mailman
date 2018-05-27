@@ -8,4 +8,5 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
     has_many :owned_records, :class_name => 'Record', :foreign_key => 'owner_id'
+    has_and_belongs_to_many :accessible_records, :class_name => 'Record'
 end
