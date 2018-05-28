@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'sendgrid-ruby', '~> 5.0'
-gem 'kaminari'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem "font-awesome-rails"
