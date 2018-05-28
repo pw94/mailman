@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'cancancan', '~> 2.0'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'active_record_union', '~> 1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
