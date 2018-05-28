@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527140128) do
+ActiveRecord::Schema.define(version: 20180528193059) do
+
+  create_table "messages", force: :cascade do |t|
+    t.string "subject"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "messages_records", id: false, force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.integer "message_id", null: false
+    t.index ["record_id", "message_id"], name: "index_messages_records_on_record_id_and_message_id"
+  end
 
   create_table "records", force: :cascade do |t|
     t.string "name"
