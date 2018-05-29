@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :messages
+  resources :records
 
   root 'main#index'
 
