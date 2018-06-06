@@ -45,7 +45,12 @@ gem 'active_record_union', '~> 1.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
+
+  gem 'rspec-rails', '~> 3.7'
+  gem 'cucumber-rails', '~> 1.4'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'faker'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
