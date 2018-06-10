@@ -4,7 +4,8 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = current_user.owned_records
+    @accessible_records = current_user.accessible_records
   end
 
   # GET /records/1
