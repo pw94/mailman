@@ -10,6 +10,7 @@ class RecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.json
   def show
+    @record = Record.includes(:owner).includes(:users).where(id: params[:id]).first
   end
 
   # GET /records/new
@@ -49,6 +50,22 @@ class RecordsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @record.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def share
+    record = Record.find params[:id]
+    user = User.find_by email: params[:user_email]
+    respond_to do |format|
+      if user.nil?
+        notice = 'Incorrect email.'
+      elsif record.owner != current_user
+        notice = 'Email does not belong to you.'
+      else
+        record.users << user
+        notice = 'Record was successfully updated.'
+      end
+      format.html { redirect_to record, notice: notice }
     end
   end
 

@@ -10,5 +10,23 @@
   <%= @record.email %>
 </p>
 
+<p>
+  <strong>Owner:</strong>
+  <%= @record.owner.name %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <% @record.users.each do |user| %>
+    <%= user.name %>
+  <% end %>
+</p>
+
+<%= form_tag({controller: "records", action: "share"}, method: "put") do %>
+  <%= label_tag(:user_email, "Share for:") %>
+  <%= text_field_tag(:user_email) %>
+  <%= submit_tag("Share") %>
+<% end %>
+
 <%= link_to 'Edit', edit_record_path(@record) %> |
 <%= link_to 'Back', records_path %>
