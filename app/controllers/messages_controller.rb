@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  include MessagesHelper
 
   # GET /messages
   # GET /messages.json
@@ -29,9 +30,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
 
+    mail = create_mail @message
+
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        response = deliver mail
+        logger.info response.status_code
+        format.html { redirect_to @message, notice: 'Message was successfully created and sent.' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
