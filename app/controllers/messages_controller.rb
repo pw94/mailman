@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.messages
+    @messages = current_user.messages.page(params[:page]).per(10)
   end
 
   # GET /messages/1
