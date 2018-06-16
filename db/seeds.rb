@@ -26,14 +26,14 @@ records = Record.create([
 ])
 
 messages = Message.create([
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[0], records: records[0..4]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[0], records: records[1..4]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[0], records: records[0...4]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[0], records: records},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[0], records: records[0...1]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[1], records: records[2..-1]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[1], records: records[4...6]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[1], records: records[0..3]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[2], records: records[0..-1]},
-    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user: users[2], records: records[0...1]}
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[0], records: records[0..4]},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[0], records: records[1..4]},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[0], records: records[0...4]},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[0], records: records.values_at(0, 1, 2, 3, 4, 6)},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[0], records: records[0...1]},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[1], records: records.values_at(2, 4)},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[1], records: records[4..6]},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[1], records: records.values_at(2, 5, 6)},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[2], records: records.values_at(4, 6)},
+    { subject: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(10), user: users[2], records: records.values_at(-1)}
 ])
