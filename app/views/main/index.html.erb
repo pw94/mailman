@@ -1,4 +1,21 @@
 <p id="alert"><%= alert %></p>
 
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<h1>Requests in each week</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Requests</th>
+      <th scope="col">Delivered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stats.each do |date, stat| %>
+        <tr>
+          <th scope="row"><%= date %></th>
+          <td><%= stat["requests"] %></td>
+          <td><%= stat["delivered"] %></td>
+        </tr>
+    <% end %>
+</table>
