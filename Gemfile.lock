@@ -278,7 +278,7 @@ DEPENDENCIES
   cancancan (~> 2.0)
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  cucumber-rails (~> 1.4)
+  cucumber-rails
   database_cleaner
   factory_bot_rails
   faker

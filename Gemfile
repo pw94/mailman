@@ -47,7 +47,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 3.7'
-  gem 'cucumber-rails', '~> 1.4'
+  gem 'cucumber-rails', require: false
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'faker'
