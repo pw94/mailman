@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @message = Message.includes(:records).where(id: params[:id]).first
   end
 
   # GET /messages/new

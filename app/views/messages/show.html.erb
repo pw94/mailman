@@ -10,4 +10,13 @@
   <%= @message.body %>
 </p>
 
+<p>
+  <strong>Records:</strong>
+  <ul>
+    <% @message.records.each do |record| %>
+      <li><%= link_to record.name, record %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Back', messages_path %>

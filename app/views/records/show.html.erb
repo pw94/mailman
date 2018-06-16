@@ -19,14 +19,20 @@
   <%= @record.owner.name %>
 </p>
 
-<p>
-  <strong>Users:</strong>
-  <% @record.users.each do |user| %>
-    <%= user.name %>
-  <% end %>
-</p>
-
 <% if @record.owner == current_user %>
+  <% if @record.users.any? %>
+
+    <p>
+      <strong>Users:</strong>
+      <ul>
+        <% @record.users.each do |user| %>
+          <li><%= user.name %></li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
+
+
   <%= form_tag({controller: "records", action: "share"}, method: "put", class: "form-inline") do %>
     <%= label_tag(:user_email, "Share for:") %>
     <%= text_field_tag(:user_email, "", class: "form-control") %>
