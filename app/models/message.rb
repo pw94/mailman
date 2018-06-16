@@ -3,4 +3,11 @@ class Message < ApplicationRecord
     has_and_belongs_to_many :records
     validates :subject, presence: true
     validates :body, presence: true
+    validate :minimum_one_record
+
+    private
+
+    def minimum_one_record
+        errors.add(:records, "Please select at least one record") if records.length.zero?
+    end
 end

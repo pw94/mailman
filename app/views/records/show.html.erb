@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info">
+    <%= notice %>
+  </div>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -22,10 +26,12 @@
   <% end %>
 </p>
 
-<%= form_tag({controller: "records", action: "share"}, method: "put") do %>
-  <%= label_tag(:user_email, "Share for:") %>
-  <%= text_field_tag(:user_email) %>
-  <%= submit_tag("Share") %>
+<% if @record.owner == current_user %>
+  <%= form_tag({controller: "records", action: "share"}, method: "put", class: "form-inline") do %>
+    <%= label_tag(:user_email, "Share for:") %>
+    <%= text_field_tag(:user_email, "", class: "form-control") %>
+    <%= submit_tag("Share", class: "btn btn-primary") %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_record_path(@record) %> |
