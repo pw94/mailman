@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      # Create an error message.
-      render 'new'
+      render 'new', locals: { error: 'Invalid email/password combination' }
     end
   end
 
