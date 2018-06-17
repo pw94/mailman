@@ -1,9 +1,9 @@
 class Message < ApplicationRecord
     belongs_to :user
     has_and_belongs_to_many :records
+    validate :minimum_one_record
     validates :subject, presence: true
     validates :body, presence: true
-    validate :minimum_one_record
 
     private
 
