@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         response = deliver mail
-        logger.info response.status_code
+        logger.error(response.status_code) unless /^2\d\d$/.match? response.status_code
         format.html { redirect_to @message, notice: 'Message was successfully created and sent.' }
         format.json { render :show, status: :created, location: @message }
       else
