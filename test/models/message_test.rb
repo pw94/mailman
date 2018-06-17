@@ -8,7 +8,7 @@ class MessageTest < ActiveSupport::TestCase
   end
 
   test "should have at least one record" do
-    message = Message.new user: users(:one), subject: 'test subject', body: 'test body'
+    message = Message.new user: users(:john), subject: 'test subject', body: 'test body'
     assert_not message.valid?
     assert_equal ["Please select at least one record"], message.errors.messages[:records]
   end

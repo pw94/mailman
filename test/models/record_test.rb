@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "records can be duplicated" do
+    duplicate_record = records(:one).dup
+    assert duplicate_record.valid?
+  end
 end
