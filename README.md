@@ -1,24 +1,39 @@
-# README
+# Mailman
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is mailing sending application using [SendGrid API](https://sendgrid.com/docs/index.html).
 
-Things you may want to cover:
+## Install dependencies
+```
+bundle
+```
 
-* Ruby version
+## Setup Environment Variables
 
-* System dependencies
+Update the development environment with your [SENDGRID_API_KEY](https://app.sendgrid.com/settings/api_keys), for example:
 
-* Configuration
+```bash
+echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+```
 
-* Database creation
+## Database creation
+```
+rake db:migrate
+```
 
-* Database initialization
+## Database initialization
+```
+rake db:setup
+```
 
-* How to run the test suite
+## Start
+```
+rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run the test suite
+```
+rake test
+cucumber
+```
