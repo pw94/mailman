@@ -12,3 +12,4 @@ Feature: Records can be share
     When I open its details page
     Then I cannot share it
     And I cannot see Users section
+    And I do not have edit button
